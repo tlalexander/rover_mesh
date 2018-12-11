@@ -17,7 +17,7 @@ organized. Except "run_simulation.py", which is a mess.
 # Screenshots
 
 ![Gui 1](doc/gui1.png)
-![Gui 2](doc/gui3.png)
+![Gui 2](doc/gui2.png)
 ![World 1](doc/world1.png)
 ![World 2](doc/world2.png)
 ![World 3](doc/world3.png)
