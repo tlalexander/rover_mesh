@@ -38,6 +38,7 @@ mesh.build_path()
 # mesh.visualize_search()
 mesh.save_mesh()
 mesh.save_texture()
+mesh.save_mesh_details()
 
 
 #########################################################

@@ -1,0 +1,160 @@
+<?xml version='1.0'?>
+<!-- adapted from the urdf at https://github.com/atb033/dd_robot -->
+<robot name="skid_steer_robot">
+
+  <!-- Base Link -->
+  <link name="base_link">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+          <box size=".35 0.2 0.15"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0.5 1 1"/>
+      </material>
+    </visual>
+    <!-- Base collision, mass and inertia -->
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0" />
+      <geometry>
+          <box size="1 0.5 0.25"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="5"/>
+      <inertia ixx="0.13" ixy="0.0" ixz="0.0" iyy="0.21" iyz="0.0" izz="0.13"/>
+    </inertial>
+
+  </link>
+
+    <!-- Front Right Wheel -->
+    <link name="front_right_wheel">
+      <visual>
+        <origin xyz="0 0 0" rpy="1.570795 0 0" />
+        <geometry>
+            <cylinder length="0.15" radius="0.16" />
+        </geometry>
+        <material name="darkgray">
+          <color rgba=".2 .2 .2 1"/>
+        </material>
+      </visual>
+      <!-- Front Right Wheel collision, mass and inertia -->
+      <collision>
+        <origin xyz="0 0 0" rpy="1.570795 0 0" />
+        <geometry>
+            <cylinder length="0.1" radius="0.16" />
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.5"/>
+        <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.005" iyz="0.0" izz="0.005"/>
+      </inertial>
+
+    </link>
+
+    <!-- Front Right Wheel joint -->
+    <joint name="joint_front_right_wheel" type="continuous">
+      <parent link="base_link"/>
+      <child link="front_right_wheel"/>
+      <origin xyz="0.25 -0.3 -0.2" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+    </joint>
+
+    <!-- Front Left Wheel -->
+    <link name="front_left_wheel">
+      <visual>
+        <origin xyz="0 0 0" rpy="1.570795 0 0" />
+        <geometry>
+            <cylinder length="0.15" radius="0.16" />
+        </geometry>
+        <material name="darkgray">
+          <color rgba=".2 .2 .2 1"/>
+        </material>
+      </visual>
+      <!-- Front Left Wheel collision, mass and inertia -->
+      <collision>
+        <origin xyz="0 0 0" rpy="1.570795 0 0" />
+        <geometry>
+            <cylinder length="0.1" radius="0.16" />
+        </geometry>
+      </collision>
+      <inertial>
+        <mass value="0.5"/>
+        <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.005" iyz="0.0" izz="0.005"/>
+      </inertial>
+    </link>
+
+    <!-- Front Left Wheel joint -->
+    <joint name="joint_front_left_wheel" type="continuous">
+      <parent link="base_link"/>
+      <child link="front_left_wheel"/>
+      <origin xyz="0.25 0.3 -0.2" rpy="0 0 0" />
+      <axis xyz="0 1 0" />
+    </joint>
+
+      <!-- Rear Right Wheel -->
+      <link name="rear_right_wheel">
+        <visual>
+          <origin xyz="0 0 0" rpy="1.570795 0 0" />
+          <geometry>
+              <cylinder length="0.15" radius="0.16" />
+          </geometry>
+          <material name="darkgray">
+            <color rgba=".2 .2 .2 1"/>
+          </material>
+        </visual>
+        <!-- Front Right Wheel collision, mass and inertia -->
+        <collision>
+          <origin xyz="0 0 0" rpy="1.570795 0 0" />
+          <geometry>
+              <cylinder length="0.1" radius="0.16" />
+          </geometry>
+        </collision>
+        <inertial>
+          <mass value="0.5"/>
+          <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.005" iyz="0.0" izz="0.005"/>
+        </inertial>
+
+      </link>
+
+      <!-- Rear Right Wheel joint -->
+      <joint name="joint_rear_right_wheel" type="continuous">
+        <parent link="base_link"/>
+        <child link="rear_right_wheel"/>
+        <origin xyz="-0.25 -0.3 -0.2" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+      </joint>
+
+      <!-- Rear Left Wheel -->
+      <link name="rear_left_wheel">
+        <visual>
+          <origin xyz="0 0 0" rpy="1.570795 0 0" />
+          <geometry>
+              <cylinder length="0.15" radius="0.16" />
+          </geometry>
+          <material name="darkgray">
+            <color rgba=".2 .2 .2 1"/>
+          </material>
+        </visual>
+        <!-- Rear Left Wheel collision, mass and inertia -->
+        <collision>
+          <origin xyz="0 0 0" rpy="1.570795 0 0" />
+          <geometry>
+              <cylinder length="0.1" radius="0.16" />
+          </geometry>
+        </collision>
+        <inertial>
+          <mass value="0.5"/>
+          <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.005" iyz="0.0" izz="0.005"/>
+        </inertial>
+      </link>
+
+      <!-- Rear Left Wheel joint -->
+      <joint name="joint_rear_left_wheel" type="continuous">
+        <parent link="base_link"/>
+        <child link="rear_left_wheel"/>
+        <origin xyz="-0.25 0.3 -0.2" rpy="0 0 0" />
+        <axis xyz="0 1 0" />
+      </joint>
+
+</robot>

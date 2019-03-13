@@ -6,9 +6,11 @@ from opensimplex import OpenSimplex
 from PIL import Image
 import queue
 import sys
+import pickle
 
 
 _MESH_NAME = "obj/generated.obj"
+MESH_DETAILS_NAME = "obj/generated.pkl"
 _FREQUENCY_MULTIPLIER = 0.05
 _WATER_RANGE_MAX_PERCENT = 10
 _SAND_RANGE_MAX_PERCENT = 50
@@ -35,8 +37,15 @@ class Mesh(object):
         self.total_vertices = self.width_steps * self.depth_steps
         self.mesh = None
         self.simplex = OpenSimplex(seed=seed)
-        self.path_width = 12
+        self.path_width = 20
         self.decay_distance = 6
+
+    def save_mesh_details(self):
+        path_meters = []
+        for p in self.path:
+            path_meters.append(((p[0] - self.width_steps/2) * self.step, (p[1] - self.depth_steps/2) * self.step))
+        with open(MESH_DETAILS_NAME, 'wb') as f:
+            pickle.dump(path_meters, f)
 
     def save_mesh(self):
         """Save the mesh to disk with _MESH_NAME for the filename."""
